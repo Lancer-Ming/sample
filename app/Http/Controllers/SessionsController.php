@@ -9,11 +9,20 @@ use Auth;
 
 class SessionsController extends Controller
 {
+    /**
+     * 登录页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('sessions.create');
     }
 
+    /**
+     * 创建新会话（登录）
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
 
@@ -33,6 +42,10 @@ class SessionsController extends Controller
         }
     }
 
+    /**
+     * 销毁会话（退出登录）
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function destroy()
     {
         Auth::logout();

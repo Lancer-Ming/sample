@@ -8,16 +8,31 @@ use App\Models\User;
 use Auth;
 class UsersController extends Controller
 {
+    /**
+     * 注册页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('users.create');
     }
 
+    /**
+     * 注册进来的页面
+     * url：http://sample.test/users/{user}
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(User $user)
     {
         return view('users.show', compact('user'));
     }
 
+    /**
+     * 注册功能
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $this->validate($request,[
