@@ -9,6 +9,13 @@ use Auth;
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
+
     /**
      * 登录页面
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -31,10 +38,10 @@ class SessionsController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials,$request->has('remember'))) {
+        if (Auth::attempt($credentials, $request->has('remember'))) {
             // 登录成功后的相关操作
             session()->flash('success', '欢迎回来!');
-            return redirect()->route('users.show', [Auth::user()]);
+            return redirect()->intended(route('users.show', [Auth::user()]));//用户登录之后使用intended可以跳转到用户登录之前想跳转的页面
         } else {
             // 登录失败后的相关操作
             session()->flash('danger', '很抱歉，您的邮箱与密码不匹配');
@@ -49,7 +56,7 @@ class SessionsController extends Controller
     public function destroy()
     {
         Auth::logout();
-        session()->flash('success','您已成功退出！');
+        session()->flash('success', '您已成功退出！');
         return redirect('login');
     }
 }
