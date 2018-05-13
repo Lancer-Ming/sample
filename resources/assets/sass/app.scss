@@ -1,12 +1,5 @@
-
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
-@import "variables";
-
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 $navbar-color: #3c3e42;
 
@@ -82,7 +75,6 @@ p {
   }
 }
 
-
 /* footer */
 
 footer {
@@ -123,6 +115,7 @@ footer {
     font-weight: bold;
   }
 }
+
 /* sidebar */
 
 aside {
@@ -164,20 +157,55 @@ section.user_info {
   border-radius: 50%;
 }
 
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    text-align: center;
+    width: 33%;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: #337ab7;
+    }
+  }
+  strong {
+    display: block;
+    font-size: 1.2em;
+    color: black;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
+
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  margin-bottom: 15px;
-}
-
-input {
-  height: auto !important;
-}
-
-.panel {
-  margin-top: 50px;
+#follow_form button {
+  margin: 0 auto;
+  display: block;
+  margin-top: 25px;
 }
 
 /* Users edit */
@@ -203,12 +231,12 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
-
 .delete-btn {
   float: right;
   position: relative;
   right: 0;
 }
+
 
 /* statuses */
 
@@ -262,3 +290,5 @@ aside {
 .status_form {
   margin-top: 20px;
 }
+
+
